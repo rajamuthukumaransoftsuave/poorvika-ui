@@ -27,5 +27,14 @@ Admin have privilege to create, edit, delete Employee in an Organization
 
 Employee: under construction.
 
+## Admin Login Credentials
+  
+  Email: admin@poorvika.com
+  Password: 123456
+  
+## Other User Credentials
+  
+  You can create through Add employee Modal.
+
 
 
