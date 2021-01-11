@@ -2,13 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+### To install node packages:
 
 ```bash
  npm i
      or
  yarn install
 ```    
+### To start the server
 
 ```bash
 npm run dev
@@ -29,4 +30,6 @@ There is two privilege one is admin and other is employee.
 Admin have privilege to create, edit, delete Employee in an Organization
 
 Employee: under construction.
+
+
 
