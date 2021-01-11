@@ -1,6 +1,3 @@
-
-## Getting Started
-
 ### To install node packages:
 
 ```bash
