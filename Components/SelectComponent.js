@@ -1,6 +1,25 @@
 import { useState } from "react"
 import { componentCss } from "../Constants"
 
+/**
+  * This component is used to show a select and options of select.
+  * you can select and change value with this.
+  @returns {*}
+  @typedef Selected(string) this have the currently selcted option. 
+  @typedef Rest(Object) this is a rest props passed to Modal Component. 
+  rest means all left props which Modal Component supports.
+  @param {{
+    label String,
+    data Array<String>
+    error Boolean
+    errorText String
+    onBlur Function
+    disabled Boolean
+    selected Selected
+    onSelect Function
+    rest Rest
+  }} props
+*/
 
 export default function SelectComponent({
     label,
@@ -18,7 +37,7 @@ export default function SelectComponent({
             <label id="listbox-label" className="block text-sm font-medium text-gray-700 mx-2 mb-1">
                 {label || ''}
             </label>
-            <div className="mt-1 relative">
+            <div className="mt-1 ml-1 relative">
                 <button onClick={() => setShowPopup(!showPopup)} type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-1 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     <span className="flex items-center">
                         <span className="ml-1 block truncate">

@@ -1,6 +1,26 @@
 import ReactDatePicker from "react-datepicker"
 import { componentCss } from "../Constants"
 
+/**
+  * This component is used to show the date picker.
+  * you can set the initial date also you can change date of the form.
+  @returns {*}
+  @typedef Selected(Date) this have the currently selcted date. 
+  @typedef Rest(Object) this is a rest props passed to ReactDatePicker Component. 
+  rest means all left props which ReactDatePricker supports.
+  @param {{
+    label String,
+    dateContainerCss String
+    error Boolean
+    errorText String
+    onBlur Function
+    disabled Boolean
+    selected Selected
+    onChange Function
+    rest Rest
+  }} props
+*/
+
 export default function DatePicker({
     label,
     dateContainerCss,

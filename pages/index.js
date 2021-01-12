@@ -6,6 +6,17 @@ import YesNoAlert from '../Components/YesNoAlert'
 import { API_URLS, componentCss } from '../Constants'
 import service from '../service'
 
+/**
+  * This is landing page of the application which you can see after login.
+  * It shows the employee table and buttons to operate on each employe.
+  * It also have button to a new employee.
+  * If the user is not an admin it will not allow to do above operations.
+  @returns {*}
+  @param {{
+    
+  }} props
+*/
+
 export default function Home() {
   const [employees, setEmployees] = useState(null)
   const [userDetails, setUserDetails] = useState(null)
@@ -96,25 +107,25 @@ export default function Home() {
             <table className='w-full divide-y divide-gray-200'>
               <thead className="bg-indigo-50 position-fixed">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     Email
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     First Name
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     Last Name
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     DOB (yyyy-mm-dd)
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     Designation
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     DOJ (yyyy-mm-dd)
           </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className={componentCss.tableHeader}>
                     Actions
           </th>
                 </tr>
@@ -134,22 +145,22 @@ export default function Home() {
                           </div>
                           {employee.email}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           {employee.firstName}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           {employee.lastName}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           {employee.dateOfBirth}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           {employee.designation}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           {employee.dateOfJoining}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className={componentCss.tableTd}>
                           <div className="w-full gap-4 flex">
                             <button className={componentCss.button}
                               onClick={() => {

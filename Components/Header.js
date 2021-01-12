@@ -2,7 +2,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { componentCss } from "../Constants";
 
-
+/**
+  * This component is used to show header of the application.
+  * We have logout button in this from that you can logout from the application.
+  @returns {*}
+  @param {{
+  }} props
+*/
 export default function Header() {
     const [userDetails, setUserDetails] = useState({})
     const router = useRouter()

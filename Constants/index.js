@@ -7,6 +7,8 @@ export const componentCss = {
     headingLg: 'text-indigo-700 antialiased text-2xl md:text-3xl font-sans font-bold capitalize',
     formContainer: 'grid flex shadow-md gap-6 bg-white mx-5 px-5 py-5 rounded min-w-max w-96',
     noteLg: 'text-gray-500 antialiased text-lg font-sans font-bold',
+    tableHeader: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
+    tableTd: 'px-6 py-4 whitespace-nowrap',
     errorText: 'text-red-300 antialiased text-sm whitespace-nowrap pr-4 font-sans font-bold',
     button: 'uppercase inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
     disableButton: 'uppercase inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300'

@@ -5,6 +5,27 @@ import SelectComponent from "../SelectComponent";
 import DatePicker from "../DatePicker";
 import service from "../../service";
 
+const errorState = {
+    touched: false,
+    error: false,
+    errorText: ''
+}
+
+/**
+  * This component is used to show the employee form.
+  * you can add employee and also edit employee data.
+  @returns {*}
+  @typedef CloseFunction this function is used to close the modal where employee form is rendered. 
+  @typedef RefreshFunction this function is used to refresh the list of employee. 
+  @typedef EmployeeFormData this Object have the information like is this a edit form or create form. If it is a edit form 
+  it will have all the initial data of the employee. 
+  @param {{
+    onClose CloseFunction,
+    refreshList RefreshFunction
+    data EmployeeFormData
+  }} props
+*/
+
 export default function EmployeeForm({
     onClose,
     refreshList,
@@ -22,44 +43,28 @@ export default function EmployeeForm({
     const [apiError, setApiError] = useState('')
     const [errorObj, setErrorObject] = useState({
         email: {
-            touched: false,
-            error: false,
-            errorText: ''
+            ...errorState
         },
-        firstName: {
-            touched: false,
-            error: false,
-            errorText: ''
+        firstName:{
+            ...errorState
         },
         lastName: {
-            touched: false,
-            error: false,
-            errorText: ''
+            ...errorState
         },
-        designation: {
-            touched: false,
-            error: false,
-            errorText: ''
+        designation:{
+            ...errorState
         },
         dob: {
-            touched: false,
-            error: false,
-            errorText: ''
+            ...errorState
         },
-        doj: {
-            touched: false,
-            error: false,
-            errorText: ''
+        doj:{
+            ...errorState
         },
         password: {
-            touched: false,
-            error: false,
-            errorText: ''
+            ...errorState
         },
-        confirmPassword: {
-            touched: false,
-            error: false,
-            errorText: ''
+        confirmPassword:{
+            ...errorState
         },
     })
 
@@ -75,7 +80,7 @@ export default function EmployeeForm({
     }, [data])
 
     useEffect(() => {
-        let newError = {
+        const newError = {
             email: {
 
             },
@@ -124,7 +129,7 @@ export default function EmployeeForm({
             newError.confirmPassword.error = true
             newError.confirmPassword.errorText = 'Password Not Matched!'
         }
-        if(doj.getTime() > dob.getTime()){
+        if(doj.getTime() < dob.getTime()){
             newError.doj.error = true
             newError.doj.errorText = 'DOJ should be greater than DOB.'
         }
@@ -224,7 +229,7 @@ export default function EmployeeForm({
                 id='email_id'
                 value={email}
                 placeholder={'Email Id'}
-                onChange={(value) => { setEmailId(value) }}
+                onChange={setEmailId}
                 error={errorObj.email.error && errorObj.email.touched}
                 errorText={errorObj.email.errorText}
                 disabled={data.edit}
@@ -242,7 +247,7 @@ export default function EmployeeForm({
                 value={firstName}
                 capitalize
                 placeholder={'First Name'}
-                onChange={(value) => { setFirstName(value) }}
+                onChange={setFirstName}
                 error={errorObj.firstName.error && errorObj.firstName.touched}
                 errorText={errorObj.firstName.errorText}
                 onBlur={() => {
@@ -259,16 +264,14 @@ export default function EmployeeForm({
                 capitalize
                 value={lastName}
                 placeholder={'Last Name'}
-                onChange={(value) => { setLastName(value) }}
+                onChange={setLastName}
             />
         </div>
         <div className="grid">
             <SelectComponent
                 label="Designation"
                 data={employeeDesignation}
-                onSelect={(value) => {
-                    setDesignation(value)
-                }}
+                onSelect={setDesignation}
                 selected={designation}
                 error={errorObj.designation.error && errorObj.designation.touched}
                 errorText={errorObj.designation.errorText}
@@ -285,7 +288,7 @@ export default function EmployeeForm({
             label="Date Of Joining: "
             selected={doj} 
             disabled={data.edit}
-            onChange={date => setDOJ(date)}
+            onChange={setDOJ}
             error={errorObj?.doj?.error || errorObj?.doj?.touched}
             errorText={errorObj?.doj?.errorText}
             onBlur={() => {
@@ -304,7 +307,7 @@ export default function EmployeeForm({
                 errorText={errorObj?.dob?.errorText}
                 selected={dob} 
                 maxDate={new Date()}
-                onChange={date => setDOB(date)}
+                onChange={setDOB}
                 onBlur={() => {
                     errorObj.dob.touched = true
                     setErrorObject({
@@ -320,7 +323,7 @@ export default function EmployeeForm({
                 value={password}
                 placeholder={'Password'}
                 type="password"
-                onChange={(value) => { setPassword(value) }}
+                onChange={setPassword}
                 error={errorObj.password.error && errorObj.password.touched}
                 errorText={errorObj.password.errorText}
                 onBlur={() => {
@@ -338,7 +341,7 @@ export default function EmployeeForm({
                 value={confirmPassword}
                 placeholder={'Confirm Password'}
                 type="password"
-                onChange={(value) => { setConfirmPassword(value) }}
+                onChange={setConfirmPassword}
                 error={errorObj.confirmPassword.error && errorObj.confirmPassword.touched}
                 errorText={errorObj.confirmPassword.errorText}
                 onBlur={() => {

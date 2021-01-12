@@ -4,6 +4,16 @@ import { API_URLS, componentCss } from "../../Constants";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+
+/**
+  * This component is used to show login form also it will redirect user to home page if user authenticate.
+  * It also validate the user if it is present in application.
+  * By this you can login as admin as well as an employee.
+  @returns {*}
+  @param {{
+  }} props
+*/
+
 export default function Login() {
     const router = useRouter()
     const [userId, setUserId] = useState('')
@@ -24,7 +34,7 @@ export default function Login() {
     })
 
     useEffect(() => {
-        let newError = {
+        const newError = {
             userId: {
 
             },
@@ -115,7 +125,7 @@ export default function Login() {
                 id='user_id'
                 value={userId}
                 placeholder={'Email Id'}
-                onChange={(value) => { setUserId(value) }}
+                onChange={setUserId}
                 error={errorObj.userId.error && errorObj.userId.touched}
                 errorText={errorObj.userId.errorText}
                 onBlur={() => {
@@ -132,7 +142,7 @@ export default function Login() {
                 value={password}
                 type="password"
                 placeholder={'Password'}
-                onChange={(value) => { setPassword(value) }}
+                onChange={setPassword}
                 error={errorObj.password.error && errorObj.password.touched}
                 errorText={errorObj.password.errorText}
                 onBlur={() => {
