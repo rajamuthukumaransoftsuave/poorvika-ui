@@ -1,5 +1,19 @@
 import { componentCss } from "../Constants";
 
+/**
+  * This component is used to show confirm alert.
+  * you can reject or continue with the operations.
+  @returns {*}
+  @typedef CloseFunction this function is used to close the modal. 
+  @typedef OkClick(Function) this function is used to continue with the operation. 
+  @typedef ConfirmDialogData(Object) this Object have the message to show and labels for both accept and reject button 
+  it will have all the initial data of the employee. 
+  @param {{
+    onClose CloseFunction,
+    onOkClick OkClick
+    data ConfirmDialogData
+  }} props
+*/
 
 export default function YesNoAlert({
     onClose,

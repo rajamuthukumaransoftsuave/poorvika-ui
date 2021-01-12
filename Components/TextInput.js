@@ -1,5 +1,29 @@
 import { componentCss } from "../Constants"
 
+/**
+  * This component is used to render a text input with error handling and label.
+  @returns {*}
+  @typedef ClassName(String) this is classname string. 
+  @typedef StyleObject(Object) this is a style object of any react component. 
+  @typedef Rest(Object) this is a rest props passed to input Component. 
+  rest means all left props which input component supports.
+  @param {{
+    type String,
+    name String,
+    id String,
+    containerStyle StyleObject,
+    inputStyle StyleObject,
+    inputClassName ClassName,
+    containerClassName ClassName,
+    error Boolean,
+    errorText String,
+    value String,
+    onChange Function,
+    onClick Function,
+    capitalize Boolean,
+    rest Rest
+  }} props
+*/
 
 export default function TextInput({
     type,
