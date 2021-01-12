@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { componentCss } from "../Constants"
 
 /**
@@ -31,14 +31,31 @@ export default function SelectComponent({
     onBlur
 }) {
     const [showPopup, setShowPopup] = useState(false)
+    const [poupData, setPoupData] = useState({
+        width: 0,
+        left: 0,
+        top: 0
+    })
+    const selectRef = useRef()
+
+    useEffect(() => {
+        if(selectRef.current){
+            setPoupData(selectRef.current.getBoundingClientRect())
+        }
+    },[selectRef])
 
     return (
         <div onBlur={onBlur}>
             <label id="listbox-label" className="block text-sm font-medium text-gray-700 mx-2 mb-1">
                 {label || ''}
             </label>
-            <div className="mt-1 ml-1 relative">
-                <button onClick={() => setShowPopup(!showPopup)} type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-1 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <div className="mt-1 ml-1">
+                <button ref={selectRef} onClick={() => {
+                     if(selectRef.current){
+                        setPoupData(selectRef.current.getBoundingClientRect())
+                    }
+                    setShowPopup(!showPopup)
+                }} type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-1 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     <span className="flex items-center">
                         <span className="ml-1 block truncate">
                         {selected || ''}
@@ -55,7 +72,14 @@ export default function SelectComponent({
                        }
                     </span>
                 </button>
-                <div className={"absolute mt-1 w-full rounded-md bg-white shadow-lg z-10" + (showPopup ? " " : " hidden")}>
+                <div 
+                    className={"absolute mt-1 rounded-md bg-white shadow-lg z-10" + (showPopup ? " " : " hidden")}
+                    style={{
+                        top: poupData.top + poupData.height + 5,
+                        left: poupData.left,
+                        width: poupData.width
+                    }}
+                >
                     <ul tabIndex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3" className="max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                         {data?.length &&
                             data.map((option, index) => {
